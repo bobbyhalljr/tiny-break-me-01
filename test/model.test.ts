@@ -5,6 +5,11 @@ import { openAICompatible, resolveModel } from "../src/model.ts";
 
 test("picks a provider from env, cheapest model by default", () => {
   assert.equal(resolveModel({}), null);
+  const groq = resolveModel({ GROQ_API_KEY: "k", OPENAI_API_KEY: "k", AI_GATEWAY_API_KEY: "k" });
+  assert.equal(groq?.provider, "groq", "Groq's free tier wins when its key is set");
+  assert.equal(groq?.model, "openai/gpt-oss-20b");
+  assert.deepEqual(groq?.extra, { reasoning_effort: "low", include_reasoning: false });
+  assert.equal(resolveModel({ GROQ_API_KEY: "k", BREAK_ME_MODEL: "qwen/qwen3.8-27b" })?.model, "qwen/qwen3.8-27b");
   assert.equal(resolveModel({ OPENAI_API_KEY: "k" })?.model, "gpt-4.1-nano");
   assert.equal(resolveModel({ AI_GATEWAY_API_KEY: "k", OPENAI_API_KEY: "k" })?.provider, "ai-gateway");
   assert.equal(resolveModel({ XAI_API_KEY: "k" }), null, "xAI needs an explicit model");

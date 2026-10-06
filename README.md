@@ -33,7 +33,8 @@ npm run chat            # type /doc path/to/file.txt to attach a document to you
 npm test
 ```
 
-No API key? Point `BREAK_ME_BASE_URL` at any local OpenAI-compatible server (llama.cpp, Ollama) and skip the key.
+Groq's free tier works fine: put a key from console.groq.com in `GROQ_API_KEY`.
+No API key at all? Point `BREAK_ME_BASE_URL` at any local OpenAI-compatible server (llama.cpp, Ollama) and skip the key.
 
 Locally you already know the code, because you picked it. The online version uses a code that only the server knows.
 
@@ -50,7 +51,8 @@ Locally you already know the code, because you picked it. The online version use
 
 ## Default model
 
-`gpt-4.1-nano` (or `openai/gpt-4.1-nano` through Vercel AI Gateway), `max_tokens` 200, temperature 0.7.
+`openai/gpt-oss-20b` on Groq's free tier when `GROQ_API_KEY` is set (low reasoning effort).
+Otherwise `gpt-4.1-nano` (or `openai/gpt-4.1-nano` through Vercel AI Gateway). Always `max_tokens` 200, temperature 0.7.
 Override with `BREAK_ME_MODEL`. Different models break differently, and that's half the fun.
 
 ## The fix episode
