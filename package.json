@@ -1,0 +1,26 @@
+{
+  "name": "tiny-break-me-01",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Break My Agent, episode 1: The Polite Assistant. A tiny TypeScript support bot guarding a secret coupon code. Try to make it leak.",
+  "type": "module",
+  "license": "MIT",
+  "author": "Bobby Hall Jr (https://bhjr.dev)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bobbyhalljr/tiny-break-me-01.git"
+  },
+  "scripts": {
+    "chat": "tsx --env-file=.env src/cli.ts",
+    "test": "node --import tsx --test test/*.test.ts",
+    "typecheck": "tsc --noEmit"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.3"
+  }
+}
